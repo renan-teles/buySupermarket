@@ -25,7 +25,7 @@ export default class HTMLComponents {
                         <li><button id='btnDeletePurchase_${purchase.getId()}' type="button" class="btn text-danger"><i class="bi-trash me-2"></i>Excluir Compra</button></li>
                     </ul>
                 </div>
-                <a id='redirect_${purchase.getId()}' class="btn btn-success mb-2" href="itemManagement.html"><i class="bi-bar-chart-steps me-2"></i>Gerir Items</a>
+                <a id='redirect_${purchase.getId()}' class="btn btn-success mb-2" href="itemsManagement.html"><i class="bi-bar-chart-steps me-2"></i>Gerir Items</a>
             </div>
         </div>
         `;

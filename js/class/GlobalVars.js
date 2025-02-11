@@ -1,5 +1,5 @@
 import Item from './Item.js';
-import Purschase from './Purchase.js';
+import Purchase from './Purchase.js';
 import HTMLComponents from './HTMLComponents.js';
 
 export default class GlobalVars {
@@ -13,7 +13,7 @@ export default class GlobalVars {
     //GENERAL FUNCTIONS
     static updatePurchases = () => {
         const purchaseData = JSON.parse(localStorage.getItem('purchases')) || [];
-        GlobalVars.purchases = purchaseData.map((p) => new Purschase(p.id, p.name, p.finalValue, p.maxSpending, p.itemsQuantity));
+        GlobalVars.purchases = purchaseData.map((p) => new Purchase(p.id, p.name, p.finalValue, p.maxSpending, p.itemsQuantity));
     }
 
     static updateItems = () => {
@@ -202,8 +202,6 @@ export default class GlobalVars {
         
         const purchase = new Purchase(purchaseId, purchaseName, 0, maxSpend, 0);
         GlobalVars.purchases.push(purchase);
-      
-        console.log(GlobalVars.purchases)
 
         localStorage.setItem('purchaseId', purchaseId + 1);
         localStorage.setItem('purchases', JSON.stringify(GlobalVars.purchases));
