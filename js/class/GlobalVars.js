@@ -1,7 +1,6 @@
-import Item from './Item';
-import Purschase from './Purchase';
-import HTMLComponents from './HTMLComponents';
-import Purchase from './Purchase';
+import Item from './Item.js';
+import Purschase from './Purchase.js';
+import HTMLComponents from './HTMLComponents.js';
 
 export default class GlobalVars {
     static purchases = [];

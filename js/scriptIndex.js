@@ -1,8 +1,8 @@
-//IMPORTAÇÕES
+//IMPORTS
 import Global from './class/GlobalVars.js';
 import HTMLComponents from './class/HTMLComponents.js';
 
-//SELEÇÃO DOM 
+//SELECTION DOM
 Global.DOMElements.set('divPurchases', document.querySelector('#divPurchases'));
 
 const btnAddPurchase = document.querySelector('#btnAddPurchase');

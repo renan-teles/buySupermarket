@@ -1,8 +1,8 @@
-//IMPORTAÇÃO
+//IMPORTS
 import Global from './class/GlobalVars.js';
 import HTMLComponents from './class/HTMLComponents.js';
 
-//SELEÇÃO DOM
+//SELECTION DOM
 Global.DOMElements.set('namePurchase', document.querySelector('#namePurchase'));
 Global.DOMElements.set('finalValue', document.querySelector('#finalValue'));
 Global.DOMElements.set('maxSpend', document.querySelector('#maxSpend'));
