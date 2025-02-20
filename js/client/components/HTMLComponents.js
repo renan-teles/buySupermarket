@@ -1,3 +1,5 @@
+import  { formatCurrency, returnUnitMeasurement } from '../scriptPages/auxiliaryFunctions';
+
 export default class HTMLComponents {
    
     //PURCHASES
@@ -12,8 +14,8 @@ export default class HTMLComponents {
             <div class="card-body text-center">
                 <h5 class="card-title">${purchase.getName()}</h5>
                 <div class='mb-3'>
-                    <span class="card-text">Gasto Máximo: <strong>${purchase.getMaxSpending()}R$</strong></span><br>
-                    <span class="card-text">Valor Final: <strong>${purchase.getFinalValue()}R$</strong></span><br>
+                    <span class="card-text">Gasto Máximo: <strong>${formatCurrency(purchase.getMaxSpending())}</strong></span><br>
+                    <span class="card-text">Valor Final: <strong>${formatCurrency(purchase.getFinalValue())}</strong></span><br>
                     <span class="card-text">Quant. Items: <strong>${purchase.getItemsQuantity()}</strong></span><br>
                 </div>
                 <div class="btn-group" role="group">
@@ -119,10 +121,10 @@ export default class HTMLComponents {
                 <div class="col-9 col-sm-8">
                     <div class="card-body">
                         <h5 id='itemName' class="card-title">${item.getName()}</h5>
-                        <span class="card-text">Tipo: ${item.getType()}.</span><br>
-                        <span class="card-text">Preço: ${item.getPrice()}R$</span><br>
-                        <span class="card-text">Quant.: ${item.getQuantity()}${(item.getType() === 'Perecível')? 'kg' : ''}</span><br>
-                        <span class="card-text">Valor Total: ${item.getTotalValue()}R$</span>
+                        <span class="card-text">Tipo: ${item.getTipe()}.</span><br>
+                        <span class="card-text">Preço: <strong>${formatCurrency(item.getPrice())}</strong></span><br>
+                        <span class="card-text">Quant.: <strong>${item.getQuantity()}${returnUnitMeasurement(item.getTipe())[0]}</strong></span><br>
+                        <span class="card-text">Valor Total: <strong>${formatCurrency(item.getTotalValue())}</strong></span>
                     </div>
                 </div>
             </div>
@@ -185,9 +187,7 @@ export default class HTMLComponents {
         return addItemModal;
     }
 
-    static getEditItemModal = (item) => {
-        const returnUnitMeasurement = () => (item.getType() === 'Perishable')? ['(KG)', '(per KG)'] : ['(Un.)', '(per Un.)'];
-        
+    static getEditItemModal = (item) => {       
         let editItemModal = `
         <div class="col-11 col-md-7 rounded bg-light p-3 shadow">
             <div class="row">
@@ -205,11 +205,11 @@ export default class HTMLComponents {
             </div>
 
             <div class="mb-3">
-                <label class='label'>Quantidade ${returnUnitMeasurement()[0]}</label>
+                <label class='label'>Quantidade ${returnUnitMeasurement(item.getTipe())[0]}</label>
                 <input placeholder='Digite a quantidade de items...' id="txtItemQuantity" type="number" value='${item.getQuantity()}' min='1' class="form-control" required>
             </div>
 
-            <label class='label' for='txtItemPrice'>Preço ${returnUnitMeasurement()[1]}</label>
+            <label class='label' for='txtItemPrice'>Preço ${returnUnitMeasurement(item.getTipe())[1]}</label>
             <div class="input-group mb-3">
                 <input id='txtItemPrice' placeholder='Digite o preço...' id="txtItemPrice" type="number" value='${item.getPrice()}' min='0' class="form-control">
                 <span class="input-group-text">R$</span>

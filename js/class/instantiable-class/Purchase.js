@@ -23,9 +23,17 @@ export default class Purchase {
 
     setFinalValue = (finalValue) => this.finalValue = finalValue;
 
+    setFinalValueAdd = (finalValue) => this.finalValue += finalValue;
+
+    setFinalValueRemove = (finalValue) => this.finalValue -= finalValue;
+
     setMaxSpending = (maxSpending) => this.maxSpending = maxSpending;
 
     setItemsQuantity = (itemsQuantity) => this.itemsQuantity = itemsQuantity;
+
+    setItemsQuantityAdd = (itemsQuantity) => this.itemsQuantity += itemsQuantity;
+    
+    setItemsQuantityRemove = (itemsQuantity) => this.itemsQuantity -= itemsQuantity;
 
     editPurchase = (name, maxSpending) => {
         this.setName(name);

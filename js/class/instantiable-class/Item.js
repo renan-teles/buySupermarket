@@ -1,9 +1,9 @@
 export default class Item {
-    constructor(id, purchaseId, name, type, quantity, price){
+    constructor(id, purchaseId, name, tipe, quantity, price){
         this.id = id;
         this.purchaseId = purchaseId;
         this.name = name;
-        this.type = type;
+        this.tipe = tipe;
         this.quantity = quantity;
         this.price = price;
         this.totalValue = (price * quantity);
@@ -15,7 +15,7 @@ export default class Item {
 
     getName = () => this.name;
     
-    getType = () => this.type;
+    getTipe = () => this.tipe;
     
     getQuantity = () => this.quantity;
     
@@ -29,7 +29,7 @@ export default class Item {
 
     setName = (name) => this.name = name;
     
-    setType = (type) => this.type = type;
+    setTipe = (tipe) => this.tipe = tipe;
     
     setQuantity = (quantity) => this.quantity = quantity;
     
