@@ -1,0 +1,74 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+.bg-img
+{
+    background-image: url('../img/img_logcad.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-gray
+{
+    background-color: #eee;
+}
+
+.input-error
+{
+    border: 1px solid #e74c3c !important; 
+    background-color: #fdecea !important;
+    color: #c0392b !important;
+    outline: none !important;
+}
+  
+.input-error:focus
+{
+    border-color: #c0392b !important;
+    box-shadow: 0 0 5px rgba(231, 76, 60, 0.5) !important;
+}
+
+.input-success 
+{
+    border: 1px solid #2ecc71 !important; 
+    background-color: #eafaf1 !important;
+    color: #27ae60 !important;
+    outline: none !important;
+}
+
+.input-success:focus 
+{
+    border-color: #27ae60 !important;
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.5) !important;
+}
+
+.active
+{
+    color: #0d6efd !important;
+    border-bottom: 1px solid #0d6efd !important;
+}
+
+.nav-link:hover
+{
+    color: #0d6efd !important;
+    border-bottom: 1px solid #0d6efd !important;
+}
+
+.checkChecked 
+{
+    pointer-events: none!important;
+}
+
+#btnTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    cursor: pointer;
+}
+
+.margin-on-top 
+{
+    padding-top: 75px;
+    transition: padding-top 0.3s ease;
+}
