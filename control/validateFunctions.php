@@ -28,6 +28,22 @@ function validateAction(string $currentAction, array $actionsNames): bool
     return true;
 }
 
+function sanitizeFloat(?string $value): float
+{
+    if (is_null($value)) {
+        return 0.0;
+    }
+
+    $value = str_replace('.', '', $value);
+    $value = str_replace(',', '.', $value);
+
+    if (is_numeric($value)) {
+        return floatval($value);
+    }
+
+    return 0.0;
+}
+
 function validateLogin(): void
 {
     if(!isset($_SESSION['userData']))
