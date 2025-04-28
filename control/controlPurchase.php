@@ -35,11 +35,11 @@ if(!validateAction($action, $actionsNames))
 }
 
 //Get Form Data Purchase
-$name = isset($_POST['name_purchase'])? $_POST['name_purchase'] : '';
-$maxSpend = isset($_POST['max_spend_purchase'])? floatval(str_replace(',','.', str_replace('.', '', $_POST['max_spend_purchase']))) : 0;
+$name = filter_input(INPUT_POST, 'name_purchase', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? '';
+$maxSpend = sanitizeFloat($_POST['max_spend_purchase'] ?? null);
 
 //Get and Verify Data User
-$userData = isset($_SESSION['userData'])? $_SESSION['userData'] : null;
+$userData = $_SESSION['userData'] ?? null;
 if(!$userData)
 {
     session_destroy();

@@ -39,10 +39,10 @@ if(!validateAction($action, $actionsNames))
 }
 
 //Get Form Data User
-$name = isset($_POST['name_user'])? $_POST['name_user'] : '';
-$email = isset($_POST['email_user'])? filter_var($_POST['email_user'], FILTER_SANITIZE_EMAIL) : '';
-$password = isset($_POST['password_user'])? $_POST['password_user'] : '';
-$newPassword = isset($_POST['new_password_user'])? $_POST['new_password_user'] : '';
+$name = filter_input(INPUT_POST, 'name_user', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? '';
+$email = filter_input(INPUT_POST, 'email_user', FILTER_VALIDATE_EMAIL) ?? '';
+$password = filter_input(INPUT_POST, 'password_user', FILTER_DEFAULT) ?? '';
+$newPassword = filter_input(INPUT_POST, 'new_password_user', FILTER_DEFAULT) ?? '';
 
 //Create User Object 
 $user = new User($name, $email, $password, $newPassword);
@@ -50,7 +50,7 @@ $user = new User($name, $email, $password, $newPassword);
 //Get and Verify User ID
 if($action !== 'register-user' && $action !== 'login-user')
 {
-    $userData = isset($_SESSION['userData'])? $_SESSION['userData'] : null;
+    $userData = $_SESSION['userData'] ?? null;
     if(!$userData)
     {
         session_destroy();

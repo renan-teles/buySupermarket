@@ -35,13 +35,13 @@ if(!validateAction($action, $actionsNames))
 }
 
 //Get Form Data Item
-$nameItem = isset($_POST['name_item'])? $_POST['name_item'] : '';
-$unitMeasurement = isset($_POST['unit_measurement_item'])? intval($_POST['unit_measurement_item']) : 0;
-$quantity = isset($_POST['quantity_item'])? floatval(str_replace(',','.', str_replace('.', '', $_POST['quantity_item']))) : 0;
-$price = isset($_POST['price_item'])? floatval(str_replace(',','.', str_replace('.', '', $_POST['price_item']))) : 0;
+$nameItem = filter_input(INPUT_POST, 'name_item', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? '';
+$unitMeasurement = filter_input(INPUT_POST, 'unit_measurement_item', FILTER_VALIDATE_INT) ?? 0;
+$quantity = sanitizeFloat($_POST['quantity_item'] ?? null);
+$price = sanitizeFloat($_POST['price_item'] ?? null);
 
 //Get and Verify Data User
-$userData = isset($_SESSION['userData'])? $_SESSION['userData'] : null;
+$userData = $_SESSION['userData'] ??null;
 if(!$userData)
 {
     session_destroy();

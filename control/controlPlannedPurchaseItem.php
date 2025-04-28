@@ -35,12 +35,12 @@ if(!validateAction($action, $actionsNames))
 }
 
 //Get Form Data Item
-$nameItem = isset($_POST['name_item_list'])? $_POST['name_item_list'] : '';
-$unitMeasurement = isset($_POST['unit_measurement_item_list'])? intval($_POST['unit_measurement_item_list']) : 0;
-$quantity = isset($_POST['quantity_item_list'])? floatval(str_replace(',','.', str_replace('.', '', $_POST['quantity_item_list']))) : 0;
+$nameItem = filter_input(INPUT_POST, 'name_item_list', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? '';
+$unitMeasurement = filter_input(INPUT_POST, 'unit_measurement_item_list', FILTER_VALIDATE_INT) ?? 0;
+$quantity = sanitizeFloat($_POST['quantity_item_list'] ?? null);
 
 //Get and Verify Data User
-$userData = isset($_SESSION['userData'])? $_SESSION['userData'] : null;
+$userData = $_SESSION['userData'] ?? null;
 if(!$userData)
 {
     session_destroy();
@@ -63,7 +63,7 @@ $plannedPurchaseItemForm = new PlannedPurchaseItem($purchaseID, $unitMeasurement
 //Get and Verify Item Id
 if($action !== 'register-item-list')
 {
-    $itemID = isset($_POST['item_list_id'])? $_POST['item_list_id'] : null; 
+    $itemID = isset($_POST['item_list_id'])? intval($_POST['item_list_id']) : null; 
     if(!$itemID)
     {
         $_SESSION['msg-errors'] = ["Ação não realizada! O id do item não foi encontrado."]; 

@@ -1,9 +1,10 @@
 <?php
 
 require_once __DIR__ . '/../autoRequireClass.php';
+require_once __DIR__ . '/hostdb.php';
 
 //PDO Connection
-$dsn = 'mysql:host=localhost;dbname=buysupermarket';
+$dsn = "mysql:host=$databaseHost; dbname=$databaseName";
 $userDB = 'root';
 $passDB = '';
 $pdoConn = new PDOConnection($dsn, $userDB, $passDB);
